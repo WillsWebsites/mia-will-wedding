@@ -1,5 +1,6 @@
 import Container from "@/components/ui/Container";
 import ReservationForm from "@/components/pages/Home/ReservationForm";
+import Details from "@/components/Details";
 
 export default function HomePage() {
   return (
@@ -8,12 +9,7 @@ export default function HomePage() {
         <div>
           <h1 className="text-primary">Will & Mia Schaefermeyer</h1>
           <p>Wedding reception invitation and RSVP</p>
-          <h2 className="text-primary">Details</h2>
-          <p>11/16/2024 - 5:00-8:00pm</p>
-          <p>
-            Chillon Reception Center. 710 E Center St, Spanish Fork, UT 84660
-          </p>
-
+          <Details />
           <ReservationForm />
         </div>
       </Container>

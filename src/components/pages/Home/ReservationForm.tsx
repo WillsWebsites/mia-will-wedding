@@ -19,8 +19,18 @@ import FormItemContainer from "@/components/ui/form/form-item-container";
 import { Textarea } from "@/components/ui/textarea";
 import { inviteSchema } from "@/validators/invite";
 import { createInvite } from "@/server/api/invite";
+import { useState } from "react";
+import { Icons } from "@/components/ui/icons";
+import { useToast } from "@/hooks/use-toast";
+import { ToastAction } from "@/components/ui/toast";
+import { useRouter } from "next/navigation";
 
 const ReservationForm = () => {
+  const [loading, setLoading] = useState(false);
+
+  const { toast } = useToast();
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof inviteSchema>>({
     resolver: zodResolver(inviteSchema),
     defaultValues: {
@@ -33,7 +43,30 @@ const ReservationForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof inviteSchema>) {
-    await createInvite(values);
+    try {
+      setLoading(true);
+      await createInvite(values);
+      form.reset();
+      toast({
+        title: "Success!",
+        description: "Your RSVP has been submitted.",
+      });
+      router.push("/thank-you");
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+        action: (
+          <ToastAction altText="Try again" onClick={() => form.reset()}>
+            Try again
+          </ToastAction>
+        ),
+      });
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -45,11 +78,16 @@ const ReservationForm = () => {
               <FormField
                 control={form.control}
                 name="firstName"
+                disabled={loading}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>First Name*</FormLabel>
                     <FormControl>
-                      <Input placeholder="First name..." {...field} />
+                      <Input
+                        placeholder="First name..."
+                        disabled={loading}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -60,11 +98,16 @@ const ReservationForm = () => {
               <FormField
                 control={form.control}
                 name="lastName"
+                disabled={loading}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Last Name*</FormLabel>
                     <FormControl>
-                      <Input placeholder="Last name..." {...field} />
+                      <Input
+                        placeholder="Last name..."
+                        disabled={loading}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -78,11 +121,16 @@ const ReservationForm = () => {
               <FormField
                 control={form.control}
                 name="email"
+                disabled={loading}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email*</FormLabel>
                     <FormControl>
-                      <Input placeholder="Email..." {...field} />
+                      <Input
+                        placeholder="Email..."
+                        disabled={loading}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -93,11 +141,16 @@ const ReservationForm = () => {
               <FormField
                 control={form.control}
                 name="attendeeCount"
+                disabled={loading}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Number of people attending*</FormLabel>
                     <FormControl>
-                      <Input placeholder="Attendee count..." {...field} />
+                      <Input
+                        placeholder="Attendee count..."
+                        disabled={loading}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -109,17 +162,25 @@ const ReservationForm = () => {
           <FormField
             control={form.control}
             name="message"
+            disabled={loading}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Message (optional)</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Message..." {...field} />
+                  <Textarea
+                    placeholder="Message..."
+                    disabled={loading}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={loading}>
+            Submit
+            {loading && <Icons.spinner className="ml-2 h-4 w-4 animate-spin" />}
+          </Button>
         </form>
       </Form>
     </FormContainer>
