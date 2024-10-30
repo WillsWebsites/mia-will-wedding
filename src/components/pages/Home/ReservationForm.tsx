@@ -22,7 +22,6 @@ import { createInvite } from "@/server/api/invite";
 import { useState } from "react";
 import { Icons } from "@/components/ui/icons";
 import { useToast } from "@/hooks/use-toast";
-import { ToastAction } from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
 import { tossConfetti } from "@/hooks/use-confetti";
 import { rsvp } from "@/lib/mail";
@@ -67,11 +66,6 @@ const ReservationForm = () => {
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your request.",
-        action: (
-          <ToastAction altText="Try again" onClick={() => form.reset()}>
-            Try again
-          </ToastAction>
-        ),
       });
       console.error(error);
     } finally {

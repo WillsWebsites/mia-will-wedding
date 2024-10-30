@@ -5,9 +5,7 @@ import { type MailerData, SendgridTemplateIds } from "@/types/mail";
 import mail from "@sendgrid/mail";
 
 export const rsvp = async (data: MailerData) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   mail.setApiKey(env.SENDGRID_API_KEY);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   await mail.send([
     {
       to: env.SENDGRID_RECEIVER,
