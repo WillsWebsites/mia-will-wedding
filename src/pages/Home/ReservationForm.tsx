@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { type z } from "zod";
 import {
   Form,
   FormControl,
@@ -17,42 +17,23 @@ import FormContainer from "@/components/ui/form/form-container";
 import FormRow from "@/components/ui/form/form-row";
 import FormItemContainer from "@/components/ui/form/form-item-container";
 import { Textarea } from "@/components/ui/textarea";
-
-const formSchema = z.object({
-  firstName: z.string().min(1, {
-    message: "First name is required.",
-  }),
-  lastName: z.string().min(1, {
-    message: "Last name is required.",
-  }),
-  email: z
-    .string()
-    .min(1, {
-      message: "Email is required.",
-    })
-    .email({
-      message: "Invalid email address.",
-    }),
-  attendingCount: z.string().min(1, {
-    message: "Attending count is required.",
-  }),
-  message: z.string().optional(),
-});
+import { inviteSchema } from "@/validators/invite";
+import { createInvite } from "@/server/api/invite";
 
 const ReservationForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof inviteSchema>>({
+    resolver: zodResolver(inviteSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
-      attendingCount: "",
+      attendeeCount: "",
       message: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof inviteSchema>) {
+    await createInvite(values);
   }
 
   return (
@@ -111,12 +92,12 @@ const ReservationForm = () => {
             <FormItemContainer>
               <FormField
                 control={form.control}
-                name="attendingCount"
+                name="attendeeCount"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Number of people attending*</FormLabel>
                     <FormControl>
-                      <Input placeholder="Attending count..." {...field} />
+                      <Input placeholder="Attendee count..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
