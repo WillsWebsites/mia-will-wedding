@@ -1,5 +1,5 @@
 import Container from "@/components/ui/Container";
-import ReservationForm from "@/pages/Home/ReservationForm";
+import ReservationForm from "@/components/pages/Home/ReservationForm";
 
 export default function HomePage() {
   return (
