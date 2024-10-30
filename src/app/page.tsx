@@ -2,8 +2,9 @@ import Container from "@/components/ui/Container";
 import ReservationForm from "@/components/pages/Home/ReservationForm";
 import Details from "@/components/Details";
 import Image from "next/image";
-const image1 = "/1.jpeg";
-const image2 = "/3.JPG";
+import image1 from "../../public/1.jpeg";
+import image2 from "../../public/3.jpg";
+
 export default function HomePage() {
   return (
     <section className="flex min-h-[100vh] bg-gradient-to-r from-slate-800 to-slate-700">

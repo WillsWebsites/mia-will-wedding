@@ -7,5 +7,5 @@ export interface MailerData {
 }
 
 export enum SendgridTemplateIds {
-  RSVP = "d-6159a4b0b1d7487abf5bc98a4c0c634b",
+  RSVP = "d-b8df2e7d8e734a77bef5bf0b709df53e",
 }
