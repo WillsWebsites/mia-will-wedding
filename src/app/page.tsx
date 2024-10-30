@@ -2,6 +2,8 @@ import Container from "@/components/ui/Container";
 import ReservationForm from "@/components/pages/Home/ReservationForm";
 import Details from "@/components/Details";
 import Image from "next/image";
+const image1 = "/1.jpeg";
+const image2 = "/3.JPG";
 export default function HomePage() {
   return (
     <section className="flex min-h-[100vh] bg-gradient-to-r from-slate-800 to-slate-700">
@@ -13,8 +15,16 @@ export default function HomePage() {
           <ReservationForm />
         </div>
         <div>
-          <Image src="/1.jpeg" alt="Will & Mia" width={500} height={500} />
-          <Image src="/3.JPG" alt="Will & Mia" width={500} height={500} />
+          <Image
+            src={image1}
+            alt="Will & Mia"
+            className="w-full max-w-[250px] rounded-lg"
+          />
+          <Image
+            src={image2}
+            alt="Will & Mia"
+            className="w-full max-w-[250px] rounded-lg"
+          />
         </div>
       </Container>
     </section>
