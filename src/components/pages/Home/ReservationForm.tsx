@@ -82,7 +82,7 @@ const ReservationForm = () => {
   return (
     <FormContainer className="mx-auto">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormRow>
             <FormItemContainer>
               <FormField

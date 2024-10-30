@@ -6,7 +6,7 @@ const Row: FC<
 > = ({ children, className, ...props }) => {
   return (
     <div
-      className={cn("flex w-full flex-col gap-2 md:flex-row", className)}
+      className={cn("flex w-full flex-col gap-6 md:flex-row", className)}
       {...props}
     >
       {children}
