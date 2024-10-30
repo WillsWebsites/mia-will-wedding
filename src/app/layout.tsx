@@ -1,3 +1,4 @@
+import Confetti from "@/components/ui/Confetti";
 import { Toaster } from "@/components/ui/toaster";
 import "@/styles/globals.css";
 
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         {children}
         <Toaster />
+        <Confetti />
       </body>
     </html>
   );

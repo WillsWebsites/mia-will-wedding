@@ -12,6 +12,9 @@ export const env = createEnv({
       .default("development"),
     TURSO_AUTH_TOKEN: z.string(),
     TURSO_DATABASE_URL: z.string().url(),
+    SENDGRID_API_KEY: z.string(),
+    SENDGRID_SENDER: z.string(),
+    SENDGRID_RECEIVER: z.string(),
   },
 
   /**
@@ -31,6 +34,9 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     TURSO_AUTH_TOKEN: process.env.TURSO_AUTH_TOKEN,
     TURSO_DATABASE_URL: process.env.TURSO_DATABASE_URL,
+    SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
+    SENDGRID_SENDER: process.env.SENDGRID_SENDER,
+    SENDGRID_RECEIVER: process.env.SENDGRID_RECEIVER,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

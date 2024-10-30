@@ -24,6 +24,8 @@ import { Icons } from "@/components/ui/icons";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
+import { tossConfetti } from "@/hooks/use-confetti";
+import { rsvp } from "@/lib/mail";
 
 const ReservationForm = () => {
   const [loading, setLoading] = useState(false);
@@ -46,11 +48,19 @@ const ReservationForm = () => {
     try {
       setLoading(true);
       await createInvite(values);
+      await rsvp({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        attendingCount: values.attendeeCount,
+        message: values.message,
+      });
       form.reset();
       toast({
         title: "Success!",
         description: "Your RSVP has been submitted.",
       });
+      tossConfetti();
       router.push("/thank-you");
     } catch (error) {
       toast({
