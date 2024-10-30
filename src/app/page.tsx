@@ -3,7 +3,7 @@ import ReservationForm from "@/components/pages/Home/ReservationForm";
 import Details from "@/components/Details";
 import Image from "next/image";
 import image1 from "../../public/1.jpeg";
-import image2 from "../../public/3.jpg";
+import image2 from "../../public/2.jpg";
 
 export default function HomePage() {
   return (
