@@ -14,8 +14,10 @@ export default function Details() {
         <span className="font-semibold">Address:</span> 710 E Center St, Spanish
         Fork, UT 84660
       </p>
+      <h2 className="font-tangerine mt-4 text-primary md:text-3xl">Registry</h2>
       <p className="mb-1 text-white/80">
-        <span className="font-semibold">Venmo:</span> @william_schaef
+        We are saving money to travel to China to see Mia&apos;s family in the
+        spring. Venmo is @william_schaef.
       </p>
     </>
   );
