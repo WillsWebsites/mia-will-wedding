@@ -74,9 +74,13 @@ const ReservationForm = () => {
   }
 
   return (
-    <FormContainer className="mx-auto">
+    <FormContainer className="mt-12">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4 rounded-xl bg-white/5 px-6 py-10 lg:px-10"
+        >
+          <h2 className="font-tangerine">RSVP</h2>
           <FormRow>
             <FormItemContainer>
               <FormField

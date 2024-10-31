@@ -10,7 +10,7 @@ const Container: FC<ContainerProps> = ({ fullWidth, className, ...props }) => {
   return (
     <div
       className={cn(
-        "px-4 py-8 sm:px-8 md:py-24",
+        "mx-auto px-4 py-8 sm:px-8 md:py-12",
         fullWidth ? "w-full" : "container",
         className,
       )}
