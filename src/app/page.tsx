@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <section className="flex min-h-[100vh] bg-gradient-to-r from-slate-800 to-slate-700">
       <Container className="items-center gap-12 md:flex">
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-8/12 md:pr-4 xl:pr-16">
           <h1 className="font-tangerine text-3xl text-primary sm:text-4xl xl:text-6xl">
             Will & Mia Schaefermeyer
           </h1>
@@ -19,16 +19,16 @@ export default function HomePage() {
           <Details />
           <ReservationForm />
         </div>
-        <div className="mt-12 flex w-full flex-col items-center justify-center gap-4 md:w-1/2 md:gap-0">
+        <div className="mt-12 flex w-full flex-col items-center justify-center gap-4 md:w-4/12 md:gap-0">
           <Image
             src={car}
             alt="Will & Mia"
-            className="w-full max-w-[350px] -rotate-3 rounded-lg md:max-w-[300px] lg:max-w-[350px]"
+            className="w-full max-w-[350px] -rotate-3 rounded-lg md:max-w-[260px] lg:max-w-[350px]"
           />
           <Image
             src={image2}
             alt="Will & Mia"
-            className="w-full max-w-[350px] rotate-2 rounded-lg md:mr-16 md:max-w-[300px] md:-translate-y-8 lg:max-w-[350px]"
+            className="w-full max-w-[350px] rotate-2 rounded-lg md:mr-16 md:max-w-[260px] md:-translate-y-8 lg:max-w-[350px]"
           />
         </div>
       </Container>

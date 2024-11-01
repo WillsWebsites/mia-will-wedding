@@ -74,14 +74,11 @@ const ReservationForm = () => {
   }
 
   return (
-    <FormContainer className="mt-12">
+    <FormContainer className="mt-4">
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 rounded-xl bg-white/5 px-6 py-10 lg:px-10"
-        >
-          <h2 className="font-tangerine">RSVP</h2>
-          <FormRow>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <h2 className="font-tangerine text-primary md:text-3xl">RSVP</h2>
+          <FormRow className="!mt-0">
             <FormItemContainer>
               <FormField
                 control={form.control}
